@@ -6,6 +6,8 @@ services:
     image: nginx:latest
     ports:
       - "8089:80"
+    env_file:
+      - ./.env
     environment:
       MESSAGE: "Hello from Docker Swarm!"
     deploy:
