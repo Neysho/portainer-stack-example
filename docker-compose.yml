@@ -1,0 +1,19 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8089:80"
+    configs:
+      - source: nginx_config
+        target: /etc/nginx/nginx.conf
+    environment:
+      MESSAGE: "Hello from Docker Swarm!"
+    deploy:
+      replicas: 1
+
+configs:
+  nginx_config:
+    file: ./nginx.conf
